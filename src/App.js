@@ -20,13 +20,17 @@ const App = () =>{
     const [searchTerm, setSearchTerm] = useState('');
 
     const searchMovies = async (title)=>{
-        const response = await fetch(`${API_KEY}&s=${title}`)
-        const data = await response.json();
-        console.log(data);
-        data.Response === "True" ?
-        (setMovies(data.Search)) :
-        (setMovies([]))
-        
+        if(title.length > 0){
+
+            const response = await fetch(`${API_KEY}&s=${title}`)
+            const data = await response.json();
+            if(data.Response === "True"){
+
+                setMovies(data.Search);
+            }else{
+                setMovies([]);
+            }
+        }
         
     }
 
@@ -42,7 +46,7 @@ const App = () =>{
             <div className="search">
                 <input placeholder="search for a movie" 
                     value={searchTerm}
-                    onChange={(e)=>{setSearchTerm(e.target.value);searchMovies(searchTerm)}}
+                    onChange={(e)=>{setSearchTerm(e.target.value);searchMovies(e.target.value)}}
                 />
                 <img
                     src={SearchIcon}
