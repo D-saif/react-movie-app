@@ -3,9 +3,9 @@ import "./App.css";
 import SearchIcon from "./SearchIcon.svg";
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
-//fa3fef62
+//
 
-const API_KEY = 'http://www.omdbapi.com/?i=tt3896198&apikey=fa3fef62';
+const API_KEY = 'http://www.omdbapi.com/?i=tt3896198&apikey='+process.env.REACT_APP_API_KEY;
 
 const movie1 = {
      Title: "The Amazing Spiderman T4 Premiere Special",
